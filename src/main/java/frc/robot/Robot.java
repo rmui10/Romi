@@ -65,14 +65,10 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    switch (m_autoSelected) {
-      case kCustomAuto:
-        // Put custom auto code here
-        break;
-      case kDefaultAuto:
-      default:
-        // Put default auto code here
-        break;
+    if (m_drivetrain.getDistance() > 10){
+      m_drivetrain.tankDrive(0, 0);
+    } else {
+      m_drivetrain.tankDrive(1, 1);
     }
   }
 
